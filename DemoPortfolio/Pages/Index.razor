@@ -182,7 +182,7 @@
         timer.Elapsed += async (s, o) =>
         {
 
-            TimeSpanToDateParts(birth, DateTime.Now, out years, out months, out days, out hours, out minutes, out seconds);
+            TimeSpanToDateParts(birth, DateTime.UtcNow, out years, out months, out days, out hours, out minutes, out seconds);
             await InvokeAsync(StateHasChanged);
         };
 
