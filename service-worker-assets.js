@@ -85,7 +85,7 @@
       "url": "img\/thumbnailpic.jpeg"
     },
     {
-      "hash": "sha256-TpVuzaPS03FJH7yXtMTqQWw+iJi8IFNkaQm1RHiE5Y8=",
+      "hash": "sha256-Zt+bjjuD8NiDIQPneDhxam3UVlWydJNIml9SzFBJYkg=",
       "url": "index.html"
     },
     {
