@@ -1,0 +1,191 @@
+﻿@page "/"
+@using System.Timers
+@layout LandingLayout
+@inject NavigationManager NavigationManager
+<div class="container-fluid m-0 d-sm-flex justify-content-sm-between wg-october-silence-085-gradient text-center w-100">
+    <div class="p-2">
+        <img src="img/profilepic.jpeg" class="img-fluid img-thumbnail" />
+    </div>
+    <div class="flex-fill text-light p-3 m-3">
+        <strong class="text-justify">Hello there, I am</strong>
+        <h1 class="display-2 ">Ritesh Odel</h1>
+        <hr class="bg-white" style="height:0.1px; border:none;" />
+        <div class="my-4">
+            <h5 class="text-uppercase font-weight-light"> <i class="fas fa-user-tie"></i> Operations Executive</h5>
+            <h6 class="my-4"><i class="fas fa-building"></i> Infosys</h6>
+            <em>Since June 28th, 2021</em>
+        </div>
+        <div class="my-4">
+            <button @onclick='() => NavigationManager.NavigateTo("About")' class="btn btn-lg btn-outline-light rounded-pill">Discover Me</button>
+        </div>
+
+        <div class="m-4 text-light">
+            <h5>I am <span class="display-4">@years</span> years <span class="display-4">@months</span> months <span class="display-4">@days</span> days <span class="display-4">@hours</span> hours <span class="display-4">@minutes</span> minutes and <span class="display-4">@seconds</span> seconds old.</h5>
+        </div>
+
+        <h3>In a nutshell</h3>
+        <div class="row text-dark">
+            <div class="col-md m-4">
+                <div class="card card-body bg-white-transparent">
+                    <h5><i class="fas fa-user"></i> I am...</h5>
+                    <hr />
+                    <table class="table table-borderless">
+                        <tr>
+                            <td><i class="fas fa-birthday-cake"></i></td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td>♏</td>
+                            <td>Scorpio</td>
+                        </tr>
+                        <tr>
+                            <td>🇮🇳</td>
+                            <td>Indian</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md m-4">
+                <div class="card card-body bg-white-transparent">
+                    <h5><i class="fas fa-heart"></i> I like...</h5>
+                    <hr />
+                    <table class="table table-borderless">
+                        <tr>
+                            <td><i class="fas fa-laptop"></i></td>
+                            <td>Tech</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-futbol"></i></td>
+                            <td>Soccer</td>
+                        </tr>
+                        <tr>
+                            <td>🦍</td>
+                            <td>Gorillas</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md m-4">
+                <div class="card card-body bg-white-transparent">
+                    <h5><i class="fas fa-brain"></i> I can...</h5>
+                    <hr />
+                    <table class="table table-borderless">
+                        <tr>
+                            <td><i class="fas fa-cog"></i></td>
+                            <td>Write code</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-wifi"></i></td>
+                            <td>Administer Networks</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-users"></i></td>
+                            <td>Be an amazing friend</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="d-flex justify-content-center my-4">
+    <a href="https://instagram.com/mr_imperfect_01" class="text-reset">
+        <span class="fa-stack fa-2x ">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+        </span>
+    </a>
+    <a href="https://www.linkedin.com/in/ritesh-odel-475954212/" class="text-reset">
+        <span class="fa-stack fa-2x ">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+        </span>
+    </a>
+    <a href="tel: +917506918235" class="text-reset">
+        <span class="fa-stack fa-2x ">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fab fa-whatsapp fa-stack-1x fa-inverse"></i>
+        </span>
+    </a>
+    <a href="mailto: ritesh22290@gmail.com" class="text-reset">
+        <span class="fa-stack fa-2x ">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+        </span>
+    </a>
+</div>
+
+@code {
+    private int years, months, days, hours, minutes, seconds;
+    Timer timer = new(1000);
+    private DateTime birth;
+    public static void TimeSpanToDateParts(DateTime d1, DateTime d2, out int years, out int months, out int days, out int hours, out int minutes, out int seconds)
+    {
+        if (d1 < d2)
+        {
+            var d3 = d2;
+            d2 = d1;
+            d1 = d3;
+        }
+
+        var span = d1 - d2;
+
+        months = 12 * (d1.Year - d2.Year) + (d1.Month - d2.Month);
+
+        //month may need to be decremented because the above calculates the ceiling of the months, not the floor.
+        //to do so we increase d2 by the same number of months and compare.
+        //(500ms fudge factor because datetimes are not precise enough to compare exactly)
+        if (d1.CompareTo(d2.AddMonths(months).AddMilliseconds(-500)) <= 0)
+        {
+            --months;
+        }
+
+        years = months / 12;
+        months -= years * 12;
+
+        if (months == 0 && years == 0)
+        {
+            days = span.Days;
+        }
+        else
+        {
+            var md1 = new DateTime(d1.Year, d1.Month, d1.Day);
+            // Fixed to use d2.Day instead of d1.Day
+            var md2 = new DateTime(d2.Year, d2.Month, d2.Day);
+            var mDays = (int)(md1 - md2).TotalDays;
+
+            if (mDays > span.Days)
+            {
+                mDays = (int)(md1.AddMonths(-1) - md2).TotalDays;
+            }
+
+            days = span.Days - mDays;
+
+
+        }
+        hours = span.Hours;
+        minutes = span.Minutes;
+        seconds = span.Seconds;
+    }
+
+
+
+    protected override void OnInitialized()
+    {
+
+        birth = new DateTime(2000, 11, 2, 2, 0, 0, DateTimeKind.Utc);
+        timer = new Timer(1000);
+        timer.Elapsed += async (s, o) =>
+        {
+
+            TimeSpanToDateParts(birth, DateTime.Now, out years, out months, out days, out hours, out minutes, out seconds);
+            await InvokeAsync(StateHasChanged);
+        };
+
+        timer.Enabled = true;
+    }
+}
