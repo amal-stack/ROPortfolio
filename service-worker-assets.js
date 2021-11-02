@@ -69,6 +69,14 @@
       "url": "icon-512.png"
     },
     {
+      "hash": "sha256-YClddHO7R3RacYQHojEch59PMiTS9PCxfTD60mugGKc=",
+      "url": "img\/avishkar.jpeg"
+    },
+    {
+      "hash": "sha256-RKu\/lfRzAKaHhWx8jnVI4wXZOmWbRXOFemmfMfGVJo0=",
+      "url": "img\/pp.jpg"
+    },
+    {
       "hash": "sha256-ESoZjKUXa+dGo0BPsD\/VRboWRYwTUqkxEJJnsT7aCys=",
       "url": "img\/profilepic.jpeg"
     },
@@ -77,7 +85,7 @@
       "url": "img\/thumbnailpic.jpeg"
     },
     {
-      "hash": "sha256-acUHUrdC6YblbA7j0GkDPDsVlJC9qkcxg7MCn5iwHpA=",
+      "hash": "sha256-TpVuzaPS03FJH7yXtMTqQWw+iJi8IFNkaQm1RHiE5Y8=",
       "url": "index.html"
     },
     {
@@ -181,7 +189,7 @@
       "url": "_framework\/System.IO.Pipelines.dll"
     },
     {
-      "hash": "sha256-ZB9YzTc5P6WhUhzo4\/5gZedvSN1M6sBOz5go1miqhcs=",
+      "hash": "sha256-Tv7bFUfKg3KFPX7Nu\/kf2YI0URE3ZxwBX1BlXoRhg4E=",
       "url": "_framework\/DemoPortfolio.dll"
     },
     {
@@ -261,7 +269,7 @@
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
-      "hash": "sha256-MkJxBNp6P\/voJ4+waaauXi6uQ7\/HJYWgvG2sG7ae0jw=",
+      "hash": "sha256-DzwR60mgX3wNJnDM67rTrGa7OsVFCm6tlPO6NYELJE0=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -269,5 +277,5 @@
       "url": "_framework\/blazor.webassembly.js"
     }
   ],
-  "version": "tp4gyjme"
+  "version": "unb0qmSl"
 };
